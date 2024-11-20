@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Gamificador</title>
+</head>
+<body>
+    <div class="centraliza_div">
+        <h1>Cadastro de Turma</h1>
+        <form action="/turma/<%=planejamento%>" method="post">
+            <div class="form-columns">
+                <div class="column">
+                    <label for="nome_professor" class="input_label">Nome do professor</label>
+                    <input type="text" id="nome_professor" name="nome_professor" placeholder="Nome do professor" class="input_label">
+    
+                    <label for="email_professor" class="input_label">Email do professor</label>
+                    <input type="email" id="email_professor" name="email_professor" placeholder="Email do professor" class="input_label">
+    
+                    <label for="nome_instituicao" class="input_label">Nome da instituição</label>
+                    <input type="text" id="nome_instituicao" name="nome_instituicao" placeholder="Nome da instituição" class="input_label">
+                </div>
+                <div class="column">
+                    <label for="nome_disciplina" class="input_label">Nome da disciplina</label>
+                    <input type="text" id="nome_disciplina" name="nome_disciplina" placeholder="Nome da disciplina" class="input_label">
+    
+                    <label for="identificacao_turma" class="input_label">Identificação da turma</label>
+                    <input type="text" id="identificacao_turma" name="identificacao_turma" placeholder="Identificação da turma" class="input_label">
+    
+                    <label for="tipo_atividade" class="input_label">Tipo da atividade</label>
+                    <input type="text" id="tipo_atividade" name="tipo_atividade" placeholder="Tipo da atividade" class="input_label">
+                </div>
+            </div>
+
+            <div>
+                <input type="number" name="idPlanejamento" value="<%=planejamento%>" readonly hidden>
+            </div>
+            
+            <button type="submit" class="btn-principal">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>

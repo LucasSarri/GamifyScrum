@@ -1,0 +1,40 @@
+import { Request, Response } from "express";
+import { turmaRepository } from "../repositories/turmaRepository";
+import { planejamentoRepository } from "../repositories/planejamentoRepository";
+
+export class TurmaController {
+    async RenderCreateTurma (req: Request, res: Response) {
+        const parametro = req.params.parametro;
+        return res.status(200).render('formTurma', {planejamento: parametro});
+    }
+
+    async CreateTurma (req: Request, res: Response) {
+        const parametro = req.params.parametro;
+        const turma = req.body;
+        
+        if (!parametro || !turma) {
+            return res.status(400).json('A turma não pode ser cadastrada por falta de informações');
+        }
+
+        const planejamento = await planejamentoRepository.findOneBy({
+            id: turma.idPlanejamento,
+        });
+
+        if (planejamento)
+        {
+            const newTurma = await turmaRepository.create({
+                nome_professor: turma.nome_professor,
+                email_professor: turma.email_professor,
+                nome_instituicao: turma.nome_instituicao,
+                nome_disciplina: turma.nome_disciplina,
+                identificacao_turma: turma.identificacao_turma,
+                tipo_atividade: turma.tipo_atividade,
+                planejamento: planejamento
+            });
+
+            await turmaRepository.save(newTurma);
+
+            return res.status(200).redirect(`/cenario_atual/${planejamento.id}`);
+        }
+    }
+}

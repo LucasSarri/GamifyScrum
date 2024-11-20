@@ -1,0 +1,76 @@
+/* Centraliza o conteúdo */
+body, html 
+{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #d3d3d3;
+}
+
+body 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo da div centralizada */
+.centraliza_div 
+{
+    width: 1200px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+/* Estilo das colunas do formulário */
+.form-columns 
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.column 
+{
+    flex: 1;
+}
+
+/* Estilo para os inputs e labels */
+.input_label
+{
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    text-align: left;
+}
+/*
+
+/* Estilo de botão principal */
+.btn-principal 
+{
+    background-color: #403F3F;
+    color: white;
+    border-radius: 15%;
+    width: 10%;
+    height: 45px;
+    margin-top: 15px;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-principal:hover 
+{
+    background-color: #333333;
+}
+
+/* Estilo das âncoras */
+a
+{
+    text-decoration: none;
+    color: white;
+}
