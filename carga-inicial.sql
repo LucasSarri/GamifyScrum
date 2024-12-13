@@ -9,3 +9,10 @@ insert into cenario_desejado (descricao) values ('Criar um ambiente de aprendiza
 ('Aumentar a motivação e concentração dos alunos'), ('Desenvolver habilidades cognitivas, sociais e de aprendizagem'), 
 ('Estimular a criatividade e a inovação'), ('Aumentar a retenção de conhecimentos adquiridos'), ('Promover a participação ativa dos alunos'), 
 ('Melhorar a colaboração e o trabalho em equipe'), ('Incentivar a aplicação prática dos conhecimentos');
+
+insert into agrupamento_scrum(descricao) values ('Papéis'), ('Eventos'), ('Artefatos');
+
+insert into scrum (descricao, "idAgScrumId") values ('Scrum Master', (select id from agrupamento_scrum where descricao = 'Papéis')), ('Product Owner', (select id from agrupamento_scrum where descricao = 'Papéis')),
+('Development Team', (select id from agrupamento_scrum where descricao = 'Papéis')), ('Sprint', (select id from agrupamento_scrum where descricao = 'Eventos')), ('Sprint Planning', (select id from agrupamento_scrum where descricao = 'Eventos')),
+('Daily Scrum', (select id from agrupamento_scrum where descricao = 'Eventos')), ('Sprint Review', (select id from agrupamento_scrum where descricao = 'Eventos')), ('Sprint Retrospective', (select id from agrupamento_scrum where descricao = 'Eventos')),
+('Product Backlog', (select id from agrupamento_scrum where descricao = 'Artefatos')), ('Sprint Backlog', (select id from agrupamento_scrum where descricao = 'Artefatos'));

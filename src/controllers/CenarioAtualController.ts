@@ -37,22 +37,4 @@ export class CenarioAtualController {
         
         return res.status(200).redirect(`/cenario_desejado/${corpo.idPlanejamento}`);
     }
-
-    async createCenarioAtual (req: Request, res: Response) {
-        const cenarioAtual = req.body;
-        const parametro = req.params.parametro;
-
-        if(!cenarioAtual || !parametro) {
-            return res.status(400).json('O cenário atual não foi cadastrado devido a falta de informação da turma');
-        }
-
-        try {
-            const newCenarioAtual = cenarioAtualRepository.create(cenarioAtual);
-            await cenarioAtualRepository.save(newCenarioAtual);
-            return res.status(201);
-        } catch (error) {
-            console.log(error);
-            return res.status(400).json('O cenário atual não foi cadastrado devido a um erro interno');
-        }
-    }
 }

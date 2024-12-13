@@ -1,16 +1,24 @@
 import { Request, Response } from "express";
 import { cenarioDesejadoRepository } from "../repositories/cenarioDesejadoRepository";
 import { planejamentoRepository } from "../repositories/planejamentoRepository";
+import { conceitosScrumRepository } from "../repositories/conceitosScrumRepository";
 
 
-export class CenarioDesejadoController {
-    async RenderCenariosDesejados (req: Request, res: Response) {
-        const cenariosdesejados = await cenarioDesejadoRepository.find();
+export class ConceitosScrumController {
+    async RenderConceitosScrum (req: Request, res: Response) {
         const parametro = req.params.parametro;
-        return res.status(200).render(`formCenarioDesejado`, {cenariosdesejados, planejamento: parametro});
+
+        const conceitos_scrum = await conceitosScrumRepository
+        .createQueryBuilder("scrum")
+        .innerJoinAndSelect("scrum.idAgScrum", "ag_scrum")
+        .getMany();
+
+        console.log(conceitos_scrum);
+
+        return res.status(200).render(`formConceitosScrum`);
     }
 
-    async addCenarioDesejadoPlanejamento (req: Request, res: Response) {
+    async addConceitosScrumPlanejamento (req: Request, res: Response) {
         const corpo = req.body;
 
         const planejamento = await planejamentoRepository.findOne({
@@ -36,6 +44,6 @@ export class CenarioDesejadoController {
 
         await planejamentoRepository.save(planejamento);
         
-        return res.status(200).redirect(`/conceito_scrum/${corpo.idPlanejamento}`);
+        return res.status(200).redirect(`/cenario_desejado/${corpo.idPlanejamento}`);
     }
 }

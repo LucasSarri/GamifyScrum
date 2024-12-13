@@ -3,6 +3,7 @@ import { TurmaController } from "./controllers/TurmaController";
 import { IndexController } from "./controllers/IndexController";
 import { CenarioAtualController } from "./controllers/CenarioAtualController";
 import { CenarioDesejadoController } from "./controllers/CenarioDesejadoController";
+import { ConceitosScrumController } from "./controllers/ConceitosScrumController";
 
 const routes = Router();
 
@@ -16,5 +17,8 @@ routes.post("/add_cenario_atual", new CenarioAtualController().addCenarioAtualPl
 
 routes.get("/cenario_desejado/:parametro", new CenarioDesejadoController().RenderCenariosDesejados);
 routes.post("/cenario_desejado", new CenarioDesejadoController().addCenarioDesejadoPlanejamento);
+
+routes.get("/conceito_scrum/:parametro", new ConceitosScrumController().RenderConceitosScrum);
+routes.post("/conceito_scrum", new ConceitosScrumController().addConceitosScrumPlanejamento);
 
 export default routes;
