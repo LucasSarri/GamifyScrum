@@ -13,37 +13,36 @@ export class ConceitosScrumController {
         .innerJoinAndSelect("scrum.idAgScrum", "ag_scrum")
         .getMany();
 
-        console.log(conceitos_scrum);
-
-        return res.status(200).render(`formConceitosScrum`);
+        return res.status(200).render(`formConceitosScrum`, {conceitos_scrum, planejamento: parametro});
     }
 
     async addConceitosScrumPlanejamento (req: Request, res: Response) {
         const corpo = req.body;
 
+        console.log(corpo);
         const planejamento = await planejamentoRepository.findOne({
             where: {id: corpo.idPlanejamento},
-            relations: ['cenarios_desejados']
+            relations: ['scrums']
         });
 
         if (!planejamento) {
             throw new Error(`Planejamento com ID ${corpo.idPlanejamento} não encontrado.`);
         }
 
-        const cenariosDesejados = await cenarioDesejadoRepository.findByIds(corpo.ativo);
+        const scrums = await conceitosScrumRepository.findByIds(corpo.ativo);
 
-        if (cenariosDesejados.length === 0) {
+        if (scrums.length === 0) {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');
         }
 
-        cenariosDesejados.forEach((cenario) => {
-            if (!planejamento.cenarios_desejados.some((c) => c.id === cenario.id)) {
-                planejamento.cenarios_desejados.push(cenario);
+        scrums.forEach((scrum) => {
+            if (!planejamento.scrums.some((c) => c.id === scrum.id)) {
+                planejamento.scrums.push(scrum);
             }
         });
 
         await planejamentoRepository.save(planejamento);
-        
+    
         return res.status(200).redirect(`/cenario_desejado/${corpo.idPlanejamento}`);
     }
 }
