@@ -16,3 +16,6 @@ insert into scrum (descricao, "idAgScrumId") values ('Scrum Master', (select id 
 ('Development Team', (select id from agrupamento_scrum where descricao = 'Papéis')), ('Sprint', (select id from agrupamento_scrum where descricao = 'Eventos')), ('Sprint Planning', (select id from agrupamento_scrum where descricao = 'Eventos')),
 ('Daily Scrum', (select id from agrupamento_scrum where descricao = 'Eventos')), ('Sprint Review', (select id from agrupamento_scrum where descricao = 'Eventos')), ('Sprint Retrospective', (select id from agrupamento_scrum where descricao = 'Eventos')),
 ('Product Backlog', (select id from agrupamento_scrum where descricao = 'Artefatos')), ('Sprint Backlog', (select id from agrupamento_scrum where descricao = 'Artefatos'));
+
+insert into perfil_jogador (descricao) values ('Jogador Competitivo'), ('Jogador Cooperativo'), ('Jogador Imersivo'), 
+('Jogador de Realização'), ('Jogador Social');

@@ -19,7 +19,6 @@ export class ConceitosScrumController {
     async addConceitosScrumPlanejamento (req: Request, res: Response) {
         const corpo = req.body;
 
-        console.log(corpo);
         const planejamento = await planejamentoRepository.findOne({
             where: {id: corpo.idPlanejamento},
             relations: ['scrums']
@@ -43,6 +42,6 @@ export class ConceitosScrumController {
 
         await planejamentoRepository.save(planejamento);
     
-        return res.status(200).redirect(`/cenario_desejado/${corpo.idPlanejamento}`);
+        return res.status(200).redirect(`/perfil_scrum/${corpo.idPlanejamento}`);
     }
 }
