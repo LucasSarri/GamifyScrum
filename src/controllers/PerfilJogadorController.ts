@@ -35,6 +35,6 @@ export class PerfilJogadorController {
 
         await planejamentoRepository.save(planejamento);
         
-        //return res.status(200).redirect(`/cenario_desejado/${corpo.idPlanejamento}`);
+        return res.status(200).redirect(`/elementos_gamificacao/${corpo.idPlanejamento}`);
     }
 }
