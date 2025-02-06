@@ -8,41 +8,65 @@
     </head>
 <body>
     <div class="centraliza_div">
-        <h1>Conceitos Scrum</h1>
+        <h1>Elementos Gamificação</h1>
         
-        <form action="/conceito_scrum" method="post">
+        <form action="/elementos_gamificacao" method="post">
             <div class="form-columns">
                 <div class="column">
-                    <h2>Papéis</h2>
-                    <% for(let i=0; i < conceitos_scrum.length; i++) { %>
-                        <% if(conceitos_scrum[i].idAgScrum.id == 1) { %>
+                    <h2>Desempenho</h2>
+                    <% for(let i=0; i < gamificacao.length; i++) { %>
+                        <% if(gamificacao[i].ag_gamificacao.id == 1) { %>
                             <div>
-                                <input type="checkbox" name="ativo" value="<%=conceitos_scrum[i].id%>">
-                                <input type="text" name="descricao" value="<%=conceitos_scrum[i].descricao%>">
+                                <input type="checkbox" name="ativo" value="<%=gamificacao[i].id%>">
+                                <input type="text" name="descricao" value="<%=gamificacao[i].descricao%>">
                             </div>
                         <% } %>
                     <% } %>
                 </div>
 
                 <div class="column">
-                    <h2>Eventos</h2>
-                    <% for(let i=0; i < conceitos_scrum.length; i++) { %>
-                        <% if(conceitos_scrum[i].idAgScrum.id == 2) { %>
+                    <h2>Ecológico</h2>
+                    <% for(let i=0; i < gamificacao.length; i++) { %>
+                        <% if(gamificacao[i].ag_gamificacao.id == 2) { %>
                             <div>
-                                <input type="checkbox" name="ativo" value="<%=conceitos_scrum[i].id%>">
-                                <input type="text" name="descricao" value="<%=conceitos_scrum[i].descricao%>">
+                                <input type="checkbox" name="ativo" value="<%=gamificacao[i].id%>">
+                                <input type="text" name="descricao" value="<%=gamificacao[i].descricao%>">
                             </div>
                         <% } %>
                     <% } %>
                 </div>
 
                 <div class="column">
-                    <h2>Artefatos</h2>
-                    <% for(let i=0; i < conceitos_scrum.length; i++) { %>
-                        <% if(conceitos_scrum[i].idAgScrum.id == 3) { %>
+                    <h2>Social</h2>
+                    <% for(let i=0; i < gamificacao.length; i++) { %>
+                        <% if(gamificacao[i].ag_gamificacao.id == 3) { %>
                             <div>
-                                <input type="checkbox" name="ativo" value="<%=conceitos_scrum[i].id%>">
-                                <input type="text" name="descricao" value="<%=conceitos_scrum[i].descricao%>">
+                                <input type="checkbox" name="ativo" value="<%=gamificacao[i].id%>">
+                                <input type="text" name="descricao" value="<%=gamificacao[i].descricao%>">
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+
+                <div class="column">
+                    <h2>Pessoal</h2>
+                    <% for(let i=0; i < gamificacao.length; i++) { %>
+                        <% if(gamificacao[i].ag_gamificacao.id == 4) { %>
+                            <div>
+                                <input type="checkbox" name="ativo" value="<%=gamificacao[i].id%>">
+                                <input type="text" name="descricao" value="<%=gamificacao[i].descricao%>">
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+
+                <div class="column">
+                    <h2>Ficcional</h2>
+                    <% for(let i=0; i < gamificacao.length; i++) { %>
+                        <% if(gamificacao[i].ag_gamificacao.id == 5) { %>
+                            <div>
+                                <input type="checkbox" name="ativo" value="<%=gamificacao[i].id%>">
+                                <input type="text" name="descricao" value="<%=gamificacao[i].descricao%>">
                             </div>
                         <% } %>
                     <% } %>
