@@ -27,3 +27,8 @@ insert into gamificacao  (descricao, "agGamificacaoId") values ('Competição',(
 insert into gamificacao  (descricao, "agGamificacaoId") values ('Sensação',(select id from agrupamento_gamificacao where descricao = 'Pessoal')), ('Objetivo',(select id from agrupamento_gamificacao where descricao = 'Pessoal')), ('Quebra-cabeça',(select id from agrupamento_gamificacao where descricao = 'Pessoal')),('Novidade',(select id from agrupamento_gamificacao where descricao = 'Pessoal')),('Renovação',(select id from agrupamento_gamificacao where descricao = 'Pessoal'));
 insert into gamificacao  (descricao, "agGamificacaoId") values ('Narrativa',(select id from agrupamento_gamificacao where descricao = 'Ficcional')), ('Storytelling',(select id from agrupamento_gamificacao where descricao = 'Ficcional'));
 
+insert into agrupamento_mapeamento (descricao ) values ('Modalidade'), ('Tipos'), ('Geral');
+
+insert into mapeamento  (descricao, "agMapeamentoId") values ('Formativa',(select id from agrupamento_mapeamento where descricao = 'Tipos')), ('Somativa',(select id from agrupamento_mapeamento where descricao = 'Tipos'));
+
+insert into mapeamento  (descricao, "agMapeamentoId") values ('Requer equipamentos específicos',(select id from agrupamento_mapeamento where descricao = 'Geral')), ('Foco em projetos reais',(select id from agrupamento_mapeamento where descricao = 'Geral')), ('Níveis de dificuldades progressivos',(select id from agrupamento_mapeamento where descricao = 'Geral'));

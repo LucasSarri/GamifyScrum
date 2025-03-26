@@ -6,6 +6,7 @@ import { CenarioDesejadoController } from "./controllers/CenarioDesejadoControll
 import { ConceitosScrumController } from "./controllers/ConceitosScrumController";
 import { PerfilJogadorController } from "./controllers/PerfilJogadorController";
 import { GamificacaoController } from "./controllers/GamificacaoController";
+import { MapeamentoController } from "./controllers/MapeamentoController";
 
 const routes = Router();
 
@@ -28,5 +29,8 @@ routes.post("/perfil_scrum", new PerfilJogadorController().addPerfilJogadorPlane
 
 routes.get("/elementos_gamificacao/:parametro", new GamificacaoController().RenderGamificacao);
 routes.post("/elementos_gamificacao", new GamificacaoController().addGamificacaoPlanejamento);
+
+routes.get("/mapeamento/:parametro", new MapeamentoController().RenderMapeamento);
+routes.post("/mapeamento", new MapeamentoController().addMapeamentoPlanejamento);
 
 export default routes;
