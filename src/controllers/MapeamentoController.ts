@@ -1,13 +1,17 @@
 import { Request, Response } from "express";
+import { mapeamentoRepository } from "../repositories/mapeamentoRepository";
 
 
 export class MapeamentoController {
     async RenderMapeamento (req: Request, res: Response) {
         const parametro = req.params.parametro;
-        console.log(parametro);
-        /*const perfil_jogador = await perfilJogadorRepository.find();
-        const parametro = req.params.parametro;
-        return res.status(200).render('formPerfilJogador', {perfil_jogador: perfil_jogador, planejamento: parametro});*/
+        const mapeamentos = await mapeamentoRepository.createQueryBuilder("mapeamento")
+        .innerJoinAndSelect("mapeamento.ag_mapeamento", "ag_mapeamento")
+        .getMany();
+        
+        console.log(mapeamentos);
+
+        //return res.status(200).render(`formElementosGamificacao`, {mapeamentos, planejamento: parametro});
     }
 
     async addMapeamentoPlanejamento (req: Request, res: Response) {
