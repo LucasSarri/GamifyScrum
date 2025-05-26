@@ -1,3 +1,8 @@
+import { MigrationInterface, QueryRunner } from "typeorm";
+
+export class Default1748256510838 implements MigrationInterface {
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`insert into cenario_atual(descricao) values ('Dificuldade na compreensão dos conceitos do Scrum'), ('Aumentar'), ('Dificuldade de trabalhar em equipe'), ('Falta de motivação'), ('Dificuldade no gerenciamento de tempo'), ('Dificuldade em priorizar tarefas'), ('Dificuldade em aprender novas ferramentas'), ('Falta de habilidades de comunicação'), ('Dificuldade de equilibrar estudo com outras responsabilidades'), ('Dificuldade em gerenciar ansiedade'), ('Dificuldade em lidar com ferramentas de desenvolvimento'), ('Dificuldade de encontrar oportunidades de estágio'), ('Dificuldade em lidar com pressão'), ('Dificuldade de trabalhar com prazos apertados')`);
         await queryRunner.query(`insert into cenario_desejado (descricao) values ('Criar um ambiente de aprendizagem motivador e envolvente'), ('Aumentar a motivação e concentração dos alunos'), ('Desenvolver habilidades cognitivas, sociais e de aprendizagem'), ('Estimular a criatividade e a inovação'), ('Aumentar a retenção de conhecimentos adquiridos'), ('Promover a participação ativa dos alunos'), ('Melhorar a colaboração e o trabalho em equipe'), ('Incentivar a aplicação prática dos conhecimentos')`);
         await queryRunner.query(`insert into agrupamento_scrum(descricao) values ('Papéis'), ('Eventos'), ('Artefatos')`);
@@ -17,3 +22,9 @@
         await queryRunner.query(`insert into recompensa  (descricao, "agRecompensaId") values ('Pontos',(select id from agrupamento_mapeamento where descricao = 'Recompensas Internas')), ('Distintivos',(select id from agrupamento_mapeamento where descricao = 'Recompensas Internas')), ('Acesso à recursos exclusivos',(select id from agrupamento_mapeamento where descricao = 'Recompensas Internas')), ('Vantagens em desafios',(select id from agrupamento_mapeamento where descricao = 'Recompensas Internas')), ('Reconhecimento',(select id from agrupamento_mapeamento where descricao = 'Recompensas Internas'))`);
         await queryRunner.query(`insert into recompensa  (descricao, "agRecompensaId") values ('Certificados Digitais',(select id from agrupamento_mapeamento where descricao = 'Recompensas Externas')), ('Brindes',(select id from agrupamento_mapeamento where descricao = 'Recompensas Externas')), ('Oportunidades para liderar a turma',(select id from agrupamento_mapeamento where descricao = 'Recompensas Externas')), ('Participação em eventos ou viagens',(select id from agrupamento_mapeamento where descricao = 'Recompensas Externas')), ('Reconhecimento Público',(select id from agrupamento_mapeamento where descricao = 'Recompensas Externas')), ('Prêmios em dinheiro ou descontos',(select id from agrupamento_mapeamento where descricao = 'Recompensas Externas'))`);
         await queryRunner.query(`insert into acao_recompensada  (descricao) values ('Participação ativa durante as atividades'), ('Conclusão de tarefas dentro do prazo'), ('Atingir pontuação elevada nas atividades'), ('Colaboração com outros alunos ou equipes'), ('Contribuição em atividades'), ('Demonstrar pensamento crítico em tarefas desafiadoras'), ('Auxiliar colegas com dificuldades'), ('Apresentar um trabalho com excelência'), ('Atender prontamente as solicitações do professor'), ('Realizar atividades extra em casa')`);
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+    }
+
+}

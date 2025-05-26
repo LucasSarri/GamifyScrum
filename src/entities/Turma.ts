@@ -24,6 +24,15 @@ export class Turma {
     @Column("varchar", { length: 50})
     tipo_atividade: string;
 
+    @Column()
+    qtd_participantes: number;
+
+    @Column("varchar", { length: 50})
+    duracao_prevista: string;
+
+    @Column("varchar", { length: 50})
+    localizacao_atividade: string;
+
     @OneToOne(() => Planejamento, planejamento => planejamento.turma)
     planejamento: Planejamento;
 }

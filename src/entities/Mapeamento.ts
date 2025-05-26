@@ -1,5 +1,6 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Agrupamento_Mapeamento } from "./Agrupamento_Mapeamento";
+import { Planejamento } from "./Planejamento";
 
 @Entity("mapeamento")
 export class Mapeamento {
@@ -14,4 +15,7 @@ export class Mapeamento {
 
     @ManyToOne(() => Agrupamento_Mapeamento, ag_mapeamento => ag_mapeamento.mapeamentos)
     ag_mapeamento: Agrupamento_Mapeamento;
+
+    @ManyToMany(() => Planejamento, planejamento => planejamento.mapeamentos)
+    planejamentos: Planejamento[];
 }

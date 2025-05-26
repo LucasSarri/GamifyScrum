@@ -29,6 +29,9 @@ export class TurmaController {
                 nome_disciplina: turma.nome_disciplina,
                 identificacao_turma: turma.identificacao_turma,
                 tipo_atividade: turma.tipo_atividade,
+                qtd_participantes: turma.qtd_participantes,
+                duracao_prevista: turma.duracao_prevista,
+                localizacao_atividade: turma.localizacao_atividade,
                 planejamento: planejamento
             });
 

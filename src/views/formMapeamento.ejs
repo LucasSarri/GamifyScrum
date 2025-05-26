@@ -8,30 +8,48 @@
     </head>
 <body>
     <div class="centraliza_div">
-        <h1>Cenário Atual</h1>
-        <form action="/add_cenario_atual" method="post">
+        <h1>Mapeamento</h1>
+        <form action="/mapeamento" method="post">
             <div class="form-columns">
                 <div class="column">
-                    <% for(let i=0; i < (cenariosatuais.length/2); i++) { %>
-                        <div>
-                            <input type="checkbox" name="ativo" value="<%=cenariosatuais[i].id%>">
-                            <input type="text" name="descricao" value="<%=cenariosatuais[i].descricao%>">
-                        </div>
+                    <h2>Modalidade</h2>
+                    <% for(let i=0; i < mapeamentos.length; i++) { %>
+                        <% if(mapeamentos[i].ag_mapeamento.id == 1) { %>
+                            <div>
+                                <input type="checkbox" name="ativo" value="<%=mapeamentos[i].id%>">
+                                <input type="text" name="descricao" value="<%=mapeamentos[i].descricao%>">
+                            </div>
+                        <% } %>
                     <% } %>
                 </div>
-    
-                <div class="column">
-                    <% for(let i=(cenariosatuais.length/2); i < cenariosatuais.length; i++) { %>
-                        <div>
-                            <input type="checkbox" name="ativo" value="<%=cenariosatuais[i].id%>">
-                            <input type="text" name="descricao" value="<%=cenariosatuais[i].descricao%>">
-                        </div>
-                    <% } %>
-                </div>
-            </div>
 
-            <div>
-                <input type="number" name="idPlanejamento" value="<%=planejamento%>" readonly hidden>
+                <div class="column">
+                    <h2>Tipos</h2>
+                    <% for(let i=0; i < mapeamentos.length; i++) { %>
+                        <% if(mapeamentos[i].ag_mapeamento.id == 2) { %>
+                            <div>
+                                <input type="checkbox" name="ativo" value="<%=mapeamentos[i].id%>">
+                                <input type="text" name="descricao" value="<%=mapeamentos[i].descricao%>">
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+
+                <div class="column">
+                    <h2>Geral</h2>
+                    <% for(let i=0; i < mapeamentos.length; i++) { %>
+                        <% if(mapeamentos[i].ag_mapeamento.id == 3) { %>
+                            <div>
+                                <input type="checkbox" name="ativo" value="<%=mapeamentos[i].id%>">
+                                <input type="text" name="descricao" value="<%=mapeamentos[i].descricao%>">
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+
+                <div>
+                    <input type="number" name="idPlanejamento" value="<%=planejamento%>" readonly hidden>
+                </div>
             </div>
 
             <button class="btn-principal"><a href="/turma/<%=planejamento%>">Voltar</a></button>

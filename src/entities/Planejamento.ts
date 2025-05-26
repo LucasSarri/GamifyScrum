@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Turma } from "./Turma";
 import { Scrum } from "./Scrum";
 import { Regra } from "./Regra";
@@ -6,9 +6,9 @@ import { Perfil_Jogador } from "./Perfil_Jogador";
 import { Cenario_Atual } from "./Cenario_Atual";
 import { Cenario_Desejado } from "./Cenario_Desejado";
 import { Acao_Recompensada } from "./Acao_Recompensada";
-import { Mapeamento } from "./Mapeamento";
 import { Recompensa } from "./Recompensa";
 import { Gamificacao } from "./Gamificacao";
+import { Mapeamento } from "./Mapeamento";
 
 @Entity("planejamento")
 export class Planejamento {
@@ -57,7 +57,6 @@ export class Planejamento {
     @JoinTable()
     acoes_recompensadas: Acao_Recompensada[];
 
-    @ManyToMany(() => Mapeamento)
-    @JoinTable()
+    @ManyToMany(() => Mapeamento, planejamento_mapeamentos => planejamento_mapeamentos.planejamentos)
     mapeamentos: Mapeamento[];
 }

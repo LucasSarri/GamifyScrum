@@ -5,7 +5,7 @@ export class Acao_Recompensada {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column("varchar", { length: 50})
+    @Column("varchar", { length: 250})
     descricao: string;
 
     @Column({ default: false})
