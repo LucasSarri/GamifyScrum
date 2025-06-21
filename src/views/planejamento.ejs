@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/style.css">
+        <title>Gamificador</title>
+    </head>
+<body>
+    <div class="centraliza_div">
+        <h1>Planejamento da Gamificação</h1>
+        <div>
+            <p>Este documento apresenta um planejamento completo e detalhado para a Gamificação em sala de aula. A Gamificação é uma estratégia comprovada para aumentar a engajamento e a motivação dos participantes, e seu potencial em sala de aula é vasto. Com o uso da Gamificação, é possível tornar o aprendizado mais divertido e atraente para os alunos, incentivando-os a participar ativamente e a se dedicar às atividades propostas. Neste sentido, este planejamento é uma ferramenta valiosa para ajudar a criar um ambiente de aprendizagem mais engajador e motivador para os alunos. </p>
+            <div>
+                <h2>Introdução</h2>
+                <p>O objetivo deste planejamento de Gamificação é fornecer ao professor uma visão completa e clara do cenário de jogo e das preferências do jogador para que ele possa orientar suas atividades educacionais aproveitando ao máximo os elementos de jogos e recompensas que mais atraem o jogador.</p>
+            </div>
+            <div>
+                <h2>Informações da Turma</h2>
+                <ul>
+                    <li>Nome do(a) professor(a): <%=planejamento.turma.nome_professor%></li>
+                    <li>Email do(a) professor(a): <%=planejamento.turma.email_professor%></li>
+                    <li>Nome da instituição: <%=planejamento.turma.nome_instituicao%></li>
+                    <li>Nome da disciplina: <%=planejamento.turma.nome_disciplina%></li>
+                    <li>IdentificaçãO da turma: <%=planejamento.turma.identificacao_turma%></li>
+                    <li>Tipo da atividade: <%=planejamento.turma.tipo_atividade%></li>
+                    <li>Quantidade de participantes: <%=planejamento.turma.qtd_participantes%></li>
+                    <li>Duração prevista: <%=planejamento.turma.duracao_prevista%></li>
+                    <li>Localização da atividade: <%=planejamento.turma.localizacao_atividade%></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Cenário Atual e Desejado</h2>
+                <div>
+                    <h3>Cenário Atual</h3>
+                    <ul>
+                        <% for(let i=0; i < planejamento.cenarios_atuais.length; i++) { %>
+                            <li><%=planejamento.cenarios_atuais[i].descricao%></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Cenário Desejado</h3>
+                    <ul>
+                        <% for(let i=0; i < planejamento.cenarios_desejados.length; i++) { %>
+                            <li><%=planejamento.cenarios_desejados[i].descricao%></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h2>Características da atividade</h2>
+                <ul>
+                    <% for(let i=0; i < planejamento.mapeamentos.length; i++) { %>
+                        <li><%=planejamento.mapeamentos[i].descricao%></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div>
+                <h2>Perfis de Jogador</h2>
+                <ul>
+                    <% for(let i=0; i < planejamento.perfis_jogador.length; i++) { %>
+                        <li><%=planejamento.perfis_jogador[i].descricao%></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div>
+                <h2>Elementos de Jogos</h2>
+                <ul>
+                    <% for(let i=0; i < planejamento.elementos_gamificacao.length; i++) { %>
+                        <li><%=planejamento.elementos_gamificacao[i].descricao%></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div>
+                <h2>Recompensas Oferecidas</h2>
+                <ul>
+                    <% for(let i=0; i < planejamento.recompensas.length; i++) { %>
+                        <li><%=planejamento.recompensas[i].descricao%></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div>
+                <h2>Ações Recompensadas</h2>
+                <ul>
+                    <% for(let i=0; i < planejamento.acoes_recompensadas.length; i++) { %>
+                        <li><%=planejamento.acoes_recompensadas[i].descricao%></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div>
+                <h2>Regras</h2>
+                <ul>
+                    <% for(let i=0; i < planejamento.regras.length; i++) { %>
+                        <li><%=planejamento.regras[i].descricao%></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div>
+                <h2>Conclusão</h2>
+                <p>A partir dos dados obtidos pela ferramenta, foi possível elaborar um planejamento completo de Gamificação para ser aplicado em sala de aula. Os principais pontos do planejamento incluem a descrição detalhada do cenário atual e desejado, o objetivo da atividade, o perfil dos jogadores, os elementos de jogos mais relevantes para cada perfil, as recompensas oferecidas, as ações que serão recompensadas e as regras definidas. Com essas informações, o professor poderá criar um ambiente de aprendizagem mais engajador e motivador para os alunos, incentivando-os a participar ativamente e a se dedicar às atividades propostas. Além disso, o planejamento permite uma maior precisão na orientação das atividades educacionais, garantindo que os elementos de jogos e recompensas escolhidos sejam os que mais atraem os jogadores.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

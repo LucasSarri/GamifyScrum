@@ -8,6 +8,9 @@ import { PerfilJogadorController } from "./controllers/PerfilJogadorController";
 import { GamificacaoController } from "./controllers/GamificacaoController";
 import { MapeamentoController } from "./controllers/MapeamentoController";
 import { RecompensasController } from "./controllers/RecompensasController";
+import { AcoesRecompensadasController } from "./controllers/AcoesRecompensadasController";
+import { PlanejamentoController } from "./controllers/PlanejamentoController";
+import { RegrasController } from "./controllers/RegrasController";
 
 const routes = Router();
 
@@ -21,6 +24,9 @@ routes.post("/add_cenario_atual", new CenarioAtualController().addCenarioAtualPl
 
 routes.get("/cenario_desejado/:parametro", new CenarioDesejadoController().RenderCenariosDesejados);
 routes.post("/cenario_desejado", new CenarioDesejadoController().addCenarioDesejadoPlanejamento);
+
+routes.get("/regras/:parametro", new RegrasController().RenderRecompensas);
+routes.post("/regras", new RegrasController().addRegrasPlanejamento);
 
 routes.get("/conceito_scrum/:parametro", new ConceitosScrumController().RenderConceitosScrum);
 routes.post("/conceito_scrum", new ConceitosScrumController().addConceitosScrumPlanejamento);
@@ -36,5 +42,10 @@ routes.post("/mapeamento", new MapeamentoController().addMapeamentoPlanejamento)
 
 routes.get("/recompensa/:parametro", new RecompensasController().RenderRecompensas);
 routes.post("/recompensa", new RecompensasController().addRecompensasPlanejamento);
+
+routes.get("/acoesrecompensadas/:parametro", new AcoesRecompensadasController().RenderAcoesRecompensadas);
+routes.post("/acoesrecompensadas", new AcoesRecompensadasController().addAcoesRecompensadasPlanejamento);
+
+routes.get("/planejamento/:parametro", new PlanejamentoController().RenderPlanejamento);
 
 export default routes;

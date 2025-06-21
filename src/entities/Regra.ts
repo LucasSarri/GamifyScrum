@@ -5,7 +5,7 @@ export class Regra {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column("varchar", { length: 50})
+    @Column("text")
     descricao: string;
 
     @Column({ default: false})

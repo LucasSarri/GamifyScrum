@@ -36,6 +36,6 @@ export class CenarioDesejadoController {
 
         await planejamentoRepository.save(planejamento);
         
-        return res.status(200).redirect(`/conceito_scrum/${corpo.idPlanejamento}`);
+        return res.status(200).redirect(`/regras/${corpo.idPlanejamento}`);
     }
 }

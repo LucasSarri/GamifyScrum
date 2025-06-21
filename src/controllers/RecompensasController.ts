@@ -10,38 +10,34 @@ export class RecompensasController {
         .innerJoinAndSelect("recompensas.ag_recompensa", "ag_recompensa")
         .getMany();
 
-        console.log(recompensas);
         return res.status(200).render(`formRecompensas`, {recompensas, planejamento: parametro});
     }
 
     async addRecompensasPlanejamento (req: Request, res: Response) {
         const corpo = req.body;
 
-        console.log(corpo);
-
-       /* const planejamento = await planejamentoRepository.findOne({
+        const planejamento = await planejamentoRepository.findOne({
             where: {id: corpo.idPlanejamento},
-            relations: ['mapeamentos']
+            relations: ['recompensas']
         });
 
         if (!planejamento) {
             throw new Error(`Planejamento com ID ${corpo.idPlanejamento} não encontrado.`);
         }
 
-        const mapeamentos = await mapeamentoRepository.findByIds(corpo.ativo);
+        const recompensas = await recompensasRepository.findByIds(corpo.ativo);
 
-        if (mapeamentos.length === 0) {
+        if (recompensas.length === 0) {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');
         }
 
-        mapeamentos.forEach((mapeamento) => {
-            if (!planejamento.mapeamentos.some((c) => c.id === mapeamento.id)) {
-                planejamento.mapeamentos.push(mapeamento);
+        recompensas.forEach((recompensa) => {
+            if (!planejamento.recompensas.some((c) => c.id === recompensa.id)) {
+                planejamento.recompensas.push(recompensa);
             }
         });
 
         await planejamentoRepository.save(planejamento);
-        console.log(planejamento);
-        return res.status(200).redirect(`/elementos_gamificacao/${corpo.idPlanejamento}`);*/
+        return res.status(200).redirect(`/acoesrecompensadas/${corpo.idPlanejamento}`);
     }
 }
