@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/style.css">
+        <title>Gamificador</title>
+    </head>
+<body>
+    <div class="centraliza_div">
+        <h1>Recompensas</h1>
+        <form action="/recompensa" method="post">
+            <div class="form-columns">
+                <div class="column">
+                    <h2>Recompensas Internas</h2>
+                    <% for(let i=0; i < recompensas.length; i++) { %>
+                        <% if(recompensas[i].ag_recompensa.id == 1) { %>
+                            <div>
+                                <input type="checkbox" name="ativo" value="<%=recompensas[i].id%>">
+                                <input type="text" name="descricao" value="<%=recompensas[i].descricao%>">
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+
+                <div class="column">
+                    <h2>Recompensas Externas</h2>
+                    <% for(let i=0; i < recompensas.length; i++) { %>
+                        <% if(recompensas[i].ag_recompensa.id == 2) { %>
+                            <div>
+                                <input type="checkbox" name="ativo" value="<%=recompensas[i].id%>">
+                                <input type="text" name="descricao" value="<%=recompensas[i].descricao%>">
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+
+                <div>
+                    <input type="number" name="idPlanejamento" value="<%=planejamento%>" readonly hidden>
+                </div>
+            </div>
+
+            <button class="btn-principal"><a href="/turma/<%=planejamento%>">Voltar</a></button>
+            <button class="btn-principal">Ajuda</button>
+            <button type="submit" class="btn-principal">Próximo</button>
+        </form>
+    </div>
+</body>
+</html>

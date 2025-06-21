@@ -1,22 +1,25 @@
 import { Request, Response } from "express";
-import { mapeamentoRepository } from "../repositories/mapeamentoRepository";
 import { planejamentoRepository } from "../repositories/planejamentoRepository";
+import { recompensasRepository } from "../repositories/recompensasRepository";
 
 
-export class MapeamentoController {
-    async RenderMapeamento (req: Request, res: Response) {
+export class RecompensasController {
+    async RenderRecompensas (req: Request, res: Response) {
         const parametro = req.params.parametro;
-        const mapeamentos = await mapeamentoRepository.createQueryBuilder("mapeamento")
-        .innerJoinAndSelect("mapeamento.ag_mapeamento", "ag_mapeamento")
+        const recompensas = await recompensasRepository.createQueryBuilder("recompensas")
+        .innerJoinAndSelect("recompensas.ag_recompensa", "ag_recompensa")
         .getMany();
 
-        return res.status(200).render(`formMapeamento`, {mapeamentos, planejamento: parametro});
+        console.log(recompensas);
+        return res.status(200).render(`formRecompensas`, {recompensas, planejamento: parametro});
     }
 
-    async addMapeamentoPlanejamento (req: Request, res: Response) {
+    async addRecompensasPlanejamento (req: Request, res: Response) {
         const corpo = req.body;
 
-        const planejamento = await planejamentoRepository.findOne({
+        console.log(corpo);
+
+       /* const planejamento = await planejamentoRepository.findOne({
             where: {id: corpo.idPlanejamento},
             relations: ['mapeamentos']
         });
@@ -38,6 +41,7 @@ export class MapeamentoController {
         });
 
         await planejamentoRepository.save(planejamento);
-        return res.status(200).redirect(`/recompensa/${corpo.idPlanejamento}`);
+        console.log(planejamento);
+        return res.status(200).redirect(`/elementos_gamificacao/${corpo.idPlanejamento}`);*/
     }
 }

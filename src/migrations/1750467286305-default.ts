@@ -1,12 +1,12 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Default1750464927217 implements MigrationInterface {
-    name = 'Default1750464927217'
+export class Default1750467286305 implements MigrationInterface {
+    name = 'Default1750467286305'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`CREATE TABLE "regra" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_980f173a0f9be0cfa23d8ddbe93" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "agrupamento_scrum" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, CONSTRAINT "PK_0679c467dd59f7665c1a9599e4e" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "scrum" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, "idAgScrumId" integer, CONSTRAINT "PK_da2735230f879eae58c628a9385" PRIMARY KEY ("id"))`);
+        await queryRunner.query(`CREATE TABLE "regra" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_980f173a0f9be0cfa23d8ddbe93" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "perfil_jogador" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_b68d2e97134c1d740c579c360a6" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "cenario_atual" ("id" SERIAL NOT NULL, "descricao" character varying(100) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_693c4f33e39ae6eea9bc804e196" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "cenario_desejado" ("id" SERIAL NOT NULL, "descricao" character varying(100) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_80acc1db7bd8716c1521a083fc7" PRIMARY KEY ("id"))`);
@@ -134,9 +134,9 @@ export class Default1750464927217 implements MigrationInterface {
         await queryRunner.query(`DROP TABLE "cenario_desejado"`);
         await queryRunner.query(`DROP TABLE "cenario_atual"`);
         await queryRunner.query(`DROP TABLE "perfil_jogador"`);
+        await queryRunner.query(`DROP TABLE "regra"`);
         await queryRunner.query(`DROP TABLE "scrum"`);
         await queryRunner.query(`DROP TABLE "agrupamento_scrum"`);
-        await queryRunner.query(`DROP TABLE "regra"`);
     }
 
 }
