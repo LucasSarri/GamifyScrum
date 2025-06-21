@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Default1748256510838 implements MigrationInterface {
+export class Default1750464935103 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`insert into cenario_atual(descricao) values ('Dificuldade na compreensão dos conceitos do Scrum'), ('Aumentar'), ('Dificuldade de trabalhar em equipe'), ('Falta de motivação'), ('Dificuldade no gerenciamento de tempo'), ('Dificuldade em priorizar tarefas'), ('Dificuldade em aprender novas ferramentas'), ('Falta de habilidades de comunicação'), ('Dificuldade de equilibrar estudo com outras responsabilidades'), ('Dificuldade em gerenciar ansiedade'), ('Dificuldade em lidar com ferramentas de desenvolvimento'), ('Dificuldade de encontrar oportunidades de estágio'), ('Dificuldade em lidar com pressão'), ('Dificuldade de trabalhar com prazos apertados')`);

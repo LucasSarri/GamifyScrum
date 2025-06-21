@@ -1,12 +1,12 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Default1748256500430 implements MigrationInterface {
-    name = 'Default1748256500430'
+export class Default1750464927217 implements MigrationInterface {
+    name = 'Default1750464927217'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`CREATE TABLE "regra" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_980f173a0f9be0cfa23d8ddbe93" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "agrupamento_scrum" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, CONSTRAINT "PK_0679c467dd59f7665c1a9599e4e" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "scrum" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, "idAgScrumId" integer, CONSTRAINT "PK_da2735230f879eae58c628a9385" PRIMARY KEY ("id"))`);
-        await queryRunner.query(`CREATE TABLE "regra" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_980f173a0f9be0cfa23d8ddbe93" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "perfil_jogador" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_b68d2e97134c1d740c579c360a6" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "cenario_atual" ("id" SERIAL NOT NULL, "descricao" character varying(100) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_693c4f33e39ae6eea9bc804e196" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "cenario_desejado" ("id" SERIAL NOT NULL, "descricao" character varying(100) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_80acc1db7bd8716c1521a083fc7" PRIMARY KEY ("id"))`);
@@ -43,6 +43,9 @@ export class Default1748256500430 implements MigrationInterface {
         await queryRunner.query(`CREATE TABLE "planejamento_acoes_recompensadas_acao_recompensada" ("planejamentoId" integer NOT NULL, "acaoRecompensadaId" integer NOT NULL, CONSTRAINT "PK_8a723080e223822c3b16675b35c" PRIMARY KEY ("planejamentoId", "acaoRecompensadaId"))`);
         await queryRunner.query(`CREATE INDEX "IDX_434e59e1f1a8dd9b26401ab6af" ON "planejamento_acoes_recompensadas_acao_recompensada" ("planejamentoId") `);
         await queryRunner.query(`CREATE INDEX "IDX_00f2718fe189f00ae21442ea9c" ON "planejamento_acoes_recompensadas_acao_recompensada" ("acaoRecompensadaId") `);
+        await queryRunner.query(`CREATE TABLE "planejamento_mapeamentos_mapeamento" ("planejamentoId" integer NOT NULL, "mapeamentoId" integer NOT NULL, CONSTRAINT "PK_b00cf1373ac1db34c82d3a319a2" PRIMARY KEY ("planejamentoId", "mapeamentoId"))`);
+        await queryRunner.query(`CREATE INDEX "IDX_9f957366a2d97bcea1115ba1b4" ON "planejamento_mapeamentos_mapeamento" ("planejamentoId") `);
+        await queryRunner.query(`CREATE INDEX "IDX_bba22ddc41a621e5d20cfdc7c7" ON "planejamento_mapeamentos_mapeamento" ("mapeamentoId") `);
         await queryRunner.query(`ALTER TABLE "scrum" ADD CONSTRAINT "FK_795c66612a67540edf87b974254" FOREIGN KEY ("idAgScrumId") REFERENCES "agrupamento_scrum"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "recompensa" ADD CONSTRAINT "FK_9214664af5c82c2182e3031ea55" FOREIGN KEY ("agRecompensaId") REFERENCES "agrupamento_recompensa"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "gamificacao" ADD CONSTRAINT "FK_41648ac35c314964d2425c59d4e" FOREIGN KEY ("agGamificacaoId") REFERENCES "agrupamento_gamificacao"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
@@ -64,9 +67,13 @@ export class Default1748256500430 implements MigrationInterface {
         await queryRunner.query(`ALTER TABLE "planejamento_cenarios_desejados_cenario_desejado" ADD CONSTRAINT "FK_ad92e6a57b4ee729847118895e1" FOREIGN KEY ("cenarioDesejadoId") REFERENCES "cenario_desejado"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
         await queryRunner.query(`ALTER TABLE "planejamento_acoes_recompensadas_acao_recompensada" ADD CONSTRAINT "FK_434e59e1f1a8dd9b26401ab6af0" FOREIGN KEY ("planejamentoId") REFERENCES "planejamento"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
         await queryRunner.query(`ALTER TABLE "planejamento_acoes_recompensadas_acao_recompensada" ADD CONSTRAINT "FK_00f2718fe189f00ae21442ea9cc" FOREIGN KEY ("acaoRecompensadaId") REFERENCES "acao_recompensada"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
+        await queryRunner.query(`ALTER TABLE "planejamento_mapeamentos_mapeamento" ADD CONSTRAINT "FK_9f957366a2d97bcea1115ba1b48" FOREIGN KEY ("planejamentoId") REFERENCES "planejamento"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
+        await queryRunner.query(`ALTER TABLE "planejamento_mapeamentos_mapeamento" ADD CONSTRAINT "FK_bba22ddc41a621e5d20cfdc7c79" FOREIGN KEY ("mapeamentoId") REFERENCES "mapeamento"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`ALTER TABLE "planejamento_mapeamentos_mapeamento" DROP CONSTRAINT "FK_bba22ddc41a621e5d20cfdc7c79"`);
+        await queryRunner.query(`ALTER TABLE "planejamento_mapeamentos_mapeamento" DROP CONSTRAINT "FK_9f957366a2d97bcea1115ba1b48"`);
         await queryRunner.query(`ALTER TABLE "planejamento_acoes_recompensadas_acao_recompensada" DROP CONSTRAINT "FK_00f2718fe189f00ae21442ea9cc"`);
         await queryRunner.query(`ALTER TABLE "planejamento_acoes_recompensadas_acao_recompensada" DROP CONSTRAINT "FK_434e59e1f1a8dd9b26401ab6af0"`);
         await queryRunner.query(`ALTER TABLE "planejamento_cenarios_desejados_cenario_desejado" DROP CONSTRAINT "FK_ad92e6a57b4ee729847118895e1"`);
@@ -88,6 +95,9 @@ export class Default1748256500430 implements MigrationInterface {
         await queryRunner.query(`ALTER TABLE "gamificacao" DROP CONSTRAINT "FK_41648ac35c314964d2425c59d4e"`);
         await queryRunner.query(`ALTER TABLE "recompensa" DROP CONSTRAINT "FK_9214664af5c82c2182e3031ea55"`);
         await queryRunner.query(`ALTER TABLE "scrum" DROP CONSTRAINT "FK_795c66612a67540edf87b974254"`);
+        await queryRunner.query(`DROP INDEX "public"."IDX_bba22ddc41a621e5d20cfdc7c7"`);
+        await queryRunner.query(`DROP INDEX "public"."IDX_9f957366a2d97bcea1115ba1b4"`);
+        await queryRunner.query(`DROP TABLE "planejamento_mapeamentos_mapeamento"`);
         await queryRunner.query(`DROP INDEX "public"."IDX_00f2718fe189f00ae21442ea9c"`);
         await queryRunner.query(`DROP INDEX "public"."IDX_434e59e1f1a8dd9b26401ab6af"`);
         await queryRunner.query(`DROP TABLE "planejamento_acoes_recompensadas_acao_recompensada"`);
@@ -124,9 +134,9 @@ export class Default1748256500430 implements MigrationInterface {
         await queryRunner.query(`DROP TABLE "cenario_desejado"`);
         await queryRunner.query(`DROP TABLE "cenario_atual"`);
         await queryRunner.query(`DROP TABLE "perfil_jogador"`);
-        await queryRunner.query(`DROP TABLE "regra"`);
         await queryRunner.query(`DROP TABLE "scrum"`);
         await queryRunner.query(`DROP TABLE "agrupamento_scrum"`);
+        await queryRunner.query(`DROP TABLE "regra"`);
     }
 
 }

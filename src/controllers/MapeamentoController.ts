@@ -15,13 +15,15 @@ export class MapeamentoController {
 
     async addMapeamentoPlanejamento (req: Request, res: Response) {
         const corpo = req.body;
-        
+
         const planejamento = await planejamentoRepository.findOne({
             where: {id: corpo.idPlanejamento},
             relations: ['mapeamentos']
         });
 
-        if (!planejamento) {
+        console.log(planejamento)
+
+        /*if (!planejamento) {
             throw new Error(`Planejamento com ID ${corpo.idPlanejamento} não encontrado.`);
         }
 
@@ -31,14 +33,14 @@ export class MapeamentoController {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');
         }
 
-        mapeamentos.forEach((perfil) => {
-            if (!planejamento.mapeamentos.some((c) => c.id === perfil.id)) {
-                planejamento.mapeamentos.push(perfil);
+        mapeamentos.forEach((mapeamento) => {
+            if (!planejamento.mapeamentos.some((c) => c.id === mapeamento.id)) {
+                planejamento.mapeamentos.push(mapeamento);
             }
         });
 
         await planejamentoRepository.save(planejamento);
-        
-        return res.status(200).redirect(`/elementos_gamificacao/${corpo.idPlanejamento}`);
+        console.log(planejamento);
+        return res.status(200).redirect(`/elementos_gamificacao/${corpo.idPlanejamento}`);*/
     }
 }

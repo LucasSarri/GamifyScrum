@@ -58,5 +58,6 @@ export class Planejamento {
     acoes_recompensadas: Acao_Recompensada[];
 
     @ManyToMany(() => Mapeamento, planejamento_mapeamentos => planejamento_mapeamentos.planejamentos)
+    @JoinTable()
     mapeamentos: Mapeamento[];
 }
