@@ -34,9 +34,11 @@ export class ConceitosScrumController {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');
         }
 
+        const scrumsExistentes = await planejamento.scrums;
+
         scrums.forEach((scrum) => {
-            if (!planejamento.scrums.some((c) => c.id === scrum.id)) {
-                planejamento.scrums.push(scrum);
+            if (!scrumsExistentes.some((c) => c.id === scrum.id)) {
+                scrumsExistentes.push(scrum);
             }
         });
 

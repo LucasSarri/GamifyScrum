@@ -5,8 +5,10 @@ import { conceitosScrumRepository } from "../repositories/conceitosScrumReposito
 import { gamificacaoRepository } from "../repositories/gamificacaoRepository";
 
 
-export class GamificacaoController {
-    async RenderGamificacao (req: Request, res: Response) {
+export class GamificacaoController 
+{
+    async RenderGamificacao (req: Request, res: Response) 
+    {
         const parametro = req.params.parametro;
 
         const gamificacao = await gamificacaoRepository
@@ -17,7 +19,8 @@ export class GamificacaoController {
         return res.status(200).render(`formElementosGamificacao`, {gamificacao, planejamento: parametro});
     }
 
-    async addGamificacaoPlanejamento (req: Request, res: Response) {
+    async addGamificacaoPlanejamento (req: Request, res: Response) 
+    {
         const corpo = req.body;
     
         const planejamento = await planejamentoRepository.findOne({
@@ -25,19 +28,24 @@ export class GamificacaoController {
             relations: ['elementos_gamificacao']
         });
 
-        if (!planejamento) {
+        if (!planejamento) 
+        {
             throw new Error(`Planejamento com ID ${corpo.idPlanejamento} não encontrado.`);
         }
 
         const elementos_gamificacao = await gamificacaoRepository.findByIds(corpo.ativo);
 
-        if (elementos_gamificacao.length === 0) {
+        if (elementos_gamificacao.length === 0) 
+        {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');
         }
 
+        const elementosgamificacaoExistentes = await planejamento.elementos_gamificacao;
+
         elementos_gamificacao.forEach((elemento_gamificacao) => {
-            if (!planejamento.elementos_gamificacao.some((c) => c.id === elemento_gamificacao.id)) {
-                planejamento.elementos_gamificacao.push(elemento_gamificacao);
+            if (!elementosgamificacaoExistentes.some((c) => c.id === elemento_gamificacao.id))
+            {
+                elementosgamificacaoExistentes.push(elemento_gamificacao);
             }
         });
 

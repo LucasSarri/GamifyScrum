@@ -1,7 +1,7 @@
 /* Centraliza o conteúdo */
 body, html 
 {
-    height: 100%;
+    min-height: 100vh;
     padding: 0;
     margin: 0;
     background-color: #d3d3d3;
@@ -73,4 +73,14 @@ a
 {
     text-decoration: none;
     color: white;
+}
+
+li 
+{
+    list-style-type: none
+}
+
+.texto-justificado 
+{
+    text-align: justify;
 }

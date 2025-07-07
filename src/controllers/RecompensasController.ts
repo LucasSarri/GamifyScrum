@@ -3,8 +3,10 @@ import { planejamentoRepository } from "../repositories/planejamentoRepository";
 import { recompensasRepository } from "../repositories/recompensasRepository";
 
 
-export class RecompensasController {
-    async RenderRecompensas (req: Request, res: Response) {
+export class RecompensasController 
+{
+    async RenderRecompensas (req: Request, res: Response) 
+    {
         const parametro = req.params.parametro;
         const recompensas = await recompensasRepository.createQueryBuilder("recompensas")
         .innerJoinAndSelect("recompensas.ag_recompensa", "ag_recompensa")
@@ -13,7 +15,8 @@ export class RecompensasController {
         return res.status(200).render(`formRecompensas`, {recompensas, planejamento: parametro});
     }
 
-    async addRecompensasPlanejamento (req: Request, res: Response) {
+    async addRecompensasPlanejamento (req: Request, res: Response) 
+    {
         const corpo = req.body;
 
         const planejamento = await planejamentoRepository.findOne({
@@ -21,19 +24,23 @@ export class RecompensasController {
             relations: ['recompensas']
         });
 
-        if (!planejamento) {
+        if (!planejamento) 
+        {
             throw new Error(`Planejamento com ID ${corpo.idPlanejamento} não encontrado.`);
         }
 
         const recompensas = await recompensasRepository.findByIds(corpo.ativo);
 
-        if (recompensas.length === 0) {
+        if (recompensas.length === 0) 
+        {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');
         }
 
+        const recompensasExistentes = await planejamento.recompensas;
+
         recompensas.forEach((recompensa) => {
-            if (!planejamento.recompensas.some((c) => c.id === recompensa.id)) {
-                planejamento.recompensas.push(recompensa);
+            if (!recompensasExistentes.some((c) => c.id === recompensa.id)) {
+                recompensasExistentes.push(recompensa);
             }
         });
 

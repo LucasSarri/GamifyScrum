@@ -27,9 +27,11 @@ export class CenarioAtualController {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');
         }
 
+        const cenariosAtuaisExistentes = await planejamento.cenarios_atuais;
+
         cenariosAtuais.forEach((cenario) => {
-            if (!planejamento.cenarios_atuais.some((c) => c.id === cenario.id)) {
-                planejamento.cenarios_atuais.push(cenario);
+            if (!cenariosAtuaisExistentes.some((c) => c.id === cenario.id)) {
+                cenariosAtuaisExistentes.push(cenario);
             }
         });
 

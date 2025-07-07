@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Planejamento } from "./Planejamento";
 
 @Entity("turma")
@@ -33,6 +33,6 @@ export class Turma {
     @Column("varchar", { length: 50})
     localizacao_atividade: string;
 
-    @OneToOne(() => Planejamento, planejamento => planejamento.turma)
-    planejamento: Planejamento;
+    @OneToMany(() => Planejamento, planejamento => planejamento.turma)
+    planejamentos: Planejamento[];
 }

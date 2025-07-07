@@ -2,17 +2,21 @@ import { Request, Response } from "express";
 import { turmaRepository } from "../repositories/turmaRepository";
 import { planejamentoRepository } from "../repositories/planejamentoRepository";
 
-export class TurmaController {
-    async RenderCreateTurma (req: Request, res: Response) {
+export class TurmaController 
+{
+    async RenderCreateTurma (req: Request, res: Response) 
+    {
         const parametro = req.params.parametro;
         return res.status(200).render('formTurma', {planejamento: parametro});
     }
 
-    async CreateTurma (req: Request, res: Response) {
+    async CreateTurma (req: Request, res: Response) 
+    {
         const parametro = req.params.parametro;
         const turma = req.body;
         
-        if (!parametro || !turma) {
+        if (!parametro || !turma)
+        {
             return res.status(400).json('A turma não pode ser cadastrada por falta de informações');
         }
 
@@ -32,7 +36,7 @@ export class TurmaController {
                 qtd_participantes: turma.qtd_participantes,
                 duracao_prevista: turma.duracao_prevista,
                 localizacao_atividade: turma.localizacao_atividade,
-                planejamento: planejamento
+                planejamentos: [planejamento]
             });
 
             await turmaRepository.save(newTurma);

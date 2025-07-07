@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Turma } from "./Turma";
 import { Scrum } from "./Scrum";
 import { Regra } from "./Regra";
@@ -21,43 +21,43 @@ export class Planejamento {
     @Column({ default: false, nullable: true })
     ativo: boolean;
 
-    @OneToOne(() => Turma)
-    @JoinColumn()
-    turma: Turma;
+    @ManyToOne(() => Turma, turma => turma.planejamentos)
+    @JoinTable()
+    turma: Promise<Turma>;
 
     @ManyToMany(() => Scrum)
     @JoinTable()
-    scrums: Scrum[];
+    scrums: Promise<Scrum[]>;
 
     @ManyToMany(() => Regra)
     @JoinTable()
-    regras: Regra[];
+    regras: Promise<Regra[]>;
 
     @ManyToMany(() => Recompensa)
     @JoinTable()
-    recompensas: Recompensa[];
+    recompensas: Promise<Recompensa[]>;
 
     @ManyToMany(() => Gamificacao)
     @JoinTable()
-    elementos_gamificacao: Gamificacao[];
+    elementos_gamificacao: Promise<Gamificacao[]>;
 
     @ManyToMany(() => Perfil_Jogador)
     @JoinTable()
-    perfis_jogador: Perfil_Jogador[];
+    perfis_jogador: Promise<Perfil_Jogador[]>;
 
     @ManyToMany(() => Cenario_Atual, (cenarioAtual) => cenarioAtual.planejamentos)
     @JoinTable()
-    cenarios_atuais: Cenario_Atual[];
+    cenarios_atuais: Promise<Cenario_Atual[]>;
 
     @ManyToMany(() => Cenario_Desejado)
     @JoinTable()
-    cenarios_desejados: Cenario_Desejado[];
+    cenarios_desejados: Promise<Cenario_Desejado[]>;
 
     @ManyToMany(() => Acao_Recompensada)
     @JoinTable()
-    acoes_recompensadas: Acao_Recompensada[];
+    acoes_recompensadas: Promise<Acao_Recompensada[]>;
 
     @ManyToMany(() => Mapeamento, planejamento_mapeamentos => planejamento_mapeamentos.planejamentos)
     @JoinTable()
-    mapeamentos: Mapeamento[];
+    mapeamentos: Promise<Mapeamento[]>;
 }

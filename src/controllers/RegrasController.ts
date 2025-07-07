@@ -2,10 +2,10 @@ import { Request, Response } from "express";
 import { planejamentoRepository } from "../repositories/planejamentoRepository";
 import { regraRepository } from "../repositories/regraRepository";
 
-
-
-export class RegrasController {
-    async RenderRecompensas (req: Request, res: Response) {
+export class RegrasController 
+{
+    async RenderRecompensas (req: Request, res: Response) 
+    {
         const parametro = req.params.parametro;
         const regras = await regraRepository.createQueryBuilder("recompensas")
         .getMany();
@@ -13,7 +13,8 @@ export class RegrasController {
         return res.status(200).render(`formRegras`, {regras, planejamento: parametro});
     }
 
-    async addRegrasPlanejamento (req: Request, res: Response) {
+    async addRegrasPlanejamento (req: Request, res: Response) 
+    {
         const corpo = req.body;
 
         const planejamento = await planejamentoRepository.findOne({
@@ -21,19 +22,23 @@ export class RegrasController {
             relations: ['regras']
         });
 
-        if (!planejamento) {
+        if (!planejamento) 
+        {
             throw new Error(`Planejamento com ID ${corpo.idPlanejamento} não encontrado.`);
         }
 
         const regras = await regraRepository.findByIds(corpo.ativo);
 
-        if (regras.length === 0) {
+        if (regras.length === 0) 
+        {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');
         }
 
+        const regrasExistentes = await planejamento.regras;
+
         regras.forEach((regra) => {
-            if (!planejamento.regras.some((c) => c.id === regra.id)) {
-                planejamento.regras.push(regra);
+            if (!regrasExistentes.some((c) => c.id === regra.id)) {
+                regrasExistentes.push(regra);
             }
         });
 

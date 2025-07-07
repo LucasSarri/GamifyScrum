@@ -1,12 +1,12 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Default1750514763287 implements MigrationInterface {
-    name = 'Default1750514763287'
+export class Default1751812898135 implements MigrationInterface {
+    name = 'Default1751812898135'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`CREATE TABLE "regra" ("id" SERIAL NOT NULL, "descricao" text NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_980f173a0f9be0cfa23d8ddbe93" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "agrupamento_scrum" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, CONSTRAINT "PK_0679c467dd59f7665c1a9599e4e" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "scrum" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, "idAgScrumId" integer, CONSTRAINT "PK_da2735230f879eae58c628a9385" PRIMARY KEY ("id"))`);
-        await queryRunner.query(`CREATE TABLE "regra" ("id" SERIAL NOT NULL, "descricao" text NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_980f173a0f9be0cfa23d8ddbe93" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "perfil_jogador" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_b68d2e97134c1d740c579c360a6" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "cenario_atual" ("id" SERIAL NOT NULL, "descricao" character varying(100) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_693c4f33e39ae6eea9bc804e196" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "cenario_desejado" ("id" SERIAL NOT NULL, "descricao" character varying(100) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_80acc1db7bd8716c1521a083fc7" PRIMARY KEY ("id"))`);
@@ -17,7 +17,7 @@ export class Default1750514763287 implements MigrationInterface {
         await queryRunner.query(`CREATE TABLE "gamificacao" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, "agGamificacaoId" integer, CONSTRAINT "PK_ca7b32eb568343904948587e62b" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "agrupamento_mapeamento" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, CONSTRAINT "PK_e3cf6a3f317f56e7f8e0bfd57aa" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "mapeamento" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, "ativo" boolean NOT NULL DEFAULT false, "agMapeamentoId" integer, CONSTRAINT "PK_7118817ba5f63d155fa4569fcaf" PRIMARY KEY ("id"))`);
-        await queryRunner.query(`CREATE TABLE "planejamento" ("id" SERIAL NOT NULL, "descricao" character varying(50), "ativo" boolean DEFAULT false, "turmaId" integer, CONSTRAINT "REL_1612ff3c88c9de8d9d698919b1" UNIQUE ("turmaId"), CONSTRAINT "PK_5ce4e86c1d5595697e4d542cf22" PRIMARY KEY ("id"))`);
+        await queryRunner.query(`CREATE TABLE "planejamento" ("id" SERIAL NOT NULL, "descricao" character varying(50), "ativo" boolean DEFAULT false, "turmaId" integer, CONSTRAINT "PK_5ce4e86c1d5595697e4d542cf22" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "turma" ("id" SERIAL NOT NULL, "nome_professor" character varying(50) NOT NULL, "email_professor" character varying(50) NOT NULL, "nome_instituicao" character varying(50) NOT NULL, "nome_disciplina" character varying(50) NOT NULL, "identificacao_turma" character varying(50) NOT NULL, "tipo_atividade" character varying(50) NOT NULL, "qtd_participantes" integer NOT NULL, "duracao_prevista" character varying(50) NOT NULL, "localizacao_atividade" character varying(50) NOT NULL, CONSTRAINT "PK_b7da8685b4c588d7bb0c3b30930" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "planejamento_scrums_scrum" ("planejamentoId" integer NOT NULL, "scrumId" integer NOT NULL, CONSTRAINT "PK_eacc5fe001695ef8c05464733fe" PRIMARY KEY ("planejamentoId", "scrumId"))`);
         await queryRunner.query(`CREATE INDEX "IDX_afdcd96d8818bd43fad8c4c06f" ON "planejamento_scrums_scrum" ("planejamentoId") `);
@@ -134,9 +134,9 @@ export class Default1750514763287 implements MigrationInterface {
         await queryRunner.query(`DROP TABLE "cenario_desejado"`);
         await queryRunner.query(`DROP TABLE "cenario_atual"`);
         await queryRunner.query(`DROP TABLE "perfil_jogador"`);
-        await queryRunner.query(`DROP TABLE "regra"`);
         await queryRunner.query(`DROP TABLE "scrum"`);
         await queryRunner.query(`DROP TABLE "agrupamento_scrum"`);
+        await queryRunner.query(`DROP TABLE "regra"`);
     }
 
 }

@@ -6,7 +6,7 @@
     É necessário realizar a cópia do arquivo env-bkp, e renomear a cópia para .env
 
 3. Executar a criação do container Docker
-    Basta rodar o comando: docker run --name gamificator -e POSTGRES_PASSWORD=gamificator -p 5433:5432 -d postgres
+    Basta rodar o comando: sudo docker run --name gamificator -e POSTGRES_PASSWORD=gamificator -p 5433:5432 -d postgres
     
 4. Rodar criação do banco de dados
     Basta rodar o comando: npm run migration:run

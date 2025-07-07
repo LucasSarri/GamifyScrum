@@ -13,5 +13,9 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_NAME,
 
     entities: [`${__dirname}/**/entities/*.{ts,js}`],
-    migrations: [`${__dirname}/**/migrations/*.{ts,js}`]
+    migrations: [`${__dirname}/**/migrations/*.{ts,js}`],
+
+    extra:{
+        useLazyLoading: true
+    }
 });

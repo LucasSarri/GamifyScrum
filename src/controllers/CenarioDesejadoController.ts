@@ -28,9 +28,11 @@ export class CenarioDesejadoController {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');
         }
 
+        const cenariosDesejadosExistentes = await planejamento.cenarios_desejados;
+
         cenariosDesejados.forEach((cenario) => {
-            if (!planejamento.cenarios_desejados.some((c) => c.id === cenario.id)) {
-                planejamento.cenarios_desejados.push(cenario);
+            if (!cenariosDesejadosExistentes.some((c) => c.id === cenario.id)) {
+                cenariosDesejadosExistentes.push(cenario);
             }
         });
 

@@ -3,8 +3,10 @@ import { mapeamentoRepository } from "../repositories/mapeamentoRepository";
 import { planejamentoRepository } from "../repositories/planejamentoRepository";
 
 
-export class MapeamentoController {
-    async RenderMapeamento (req: Request, res: Response) {
+export class MapeamentoController 
+{
+    async RenderMapeamento (req: Request, res: Response) 
+    {
         const parametro = req.params.parametro;
         const mapeamentos = await mapeamentoRepository.createQueryBuilder("mapeamento")
         .innerJoinAndSelect("mapeamento.ag_mapeamento", "ag_mapeamento")
@@ -13,7 +15,8 @@ export class MapeamentoController {
         return res.status(200).render(`formMapeamento`, {mapeamentos, planejamento: parametro});
     }
 
-    async addMapeamentoPlanejamento (req: Request, res: Response) {
+    async addMapeamentoPlanejamento (req: Request, res: Response) 
+    {
         const corpo = req.body;
 
         const planejamento = await planejamentoRepository.findOne({
@@ -21,19 +24,24 @@ export class MapeamentoController {
             relations: ['mapeamentos']
         });
 
-        if (!planejamento) {
+        if (!planejamento) 
+        {
             throw new Error(`Planejamento com ID ${corpo.idPlanejamento} não encontrado.`);
         }
 
         const mapeamentos = await mapeamentoRepository.findByIds(corpo.ativo);
 
-        if (mapeamentos.length === 0) {
+        if (mapeamentos.length === 0) 
+        {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');
         }
 
+        const mapeamentosExistentes = await planejamento.mapeamentos;
+
         mapeamentos.forEach((mapeamento) => {
-            if (!planejamento.mapeamentos.some((c) => c.id === mapeamento.id)) {
-                planejamento.mapeamentos.push(mapeamento);
+            if (!mapeamentosExistentes.some((c) => c.id === mapeamento.id)) 
+            {
+                mapeamentosExistentes.push(mapeamento);
             }
         });
 
