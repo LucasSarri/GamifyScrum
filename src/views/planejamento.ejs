@@ -49,6 +49,16 @@
                 </div>
             </div>
             <div>
+                <h2>Conceitos Scrum</h2>
+                <div>
+                    <ul class="texto-justificado">
+                        <% for(let i=0; i < scrums.length; i++) { %>
+                            <li><%=scrums[i].descricao%></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <div>
                 <h2>Características da atividade</h2>
                 <ul class="texto-justificado">
                     <% for(let i=0; i < mapeamentos.length; i++) { %>
