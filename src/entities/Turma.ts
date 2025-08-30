@@ -27,8 +27,8 @@ export class Turma {
     @Column()
     qtd_participantes: number;
 
-    @Column("varchar", { length: 50})
-    duracao_prevista: string;
+    @Column()
+    duracao_prevista: number;
 
     @Column("varchar", { length: 50})
     localizacao_atividade: string;
