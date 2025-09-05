@@ -26,8 +26,7 @@ export class Planejamento {
     @JoinTable()
     turma: Promise<Turma>;
 
-    @ManyToMany(() => Scrum)
-    @JoinTable()
+    @ManyToMany(() => Scrum, scrum => scrum.planejamentos)
     scrums: Promise<Scrum[]>;
 
     @ManyToMany(() => Regra)

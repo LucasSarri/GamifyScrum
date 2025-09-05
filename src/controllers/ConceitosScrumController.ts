@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { cenarioDesejadoRepository } from "../repositories/cenarioDesejadoRepository";
 import { planejamentoRepository } from "../repositories/planejamentoRepository";
 import { conceitosScrumRepository } from "../repositories/conceitosScrumRepository";
 
@@ -44,6 +43,7 @@ export class ConceitosScrumController {
 
         await planejamentoRepository.save(planejamento);
     
-        return res.status(200).redirect(`/perfil_scrum/${corpo.idPlanejamento}`);
+        //return res.status(200).redirect(`/perfil_scrum/${corpo.idPlanejamento}`);
+        return res.status(200).redirect(`/semanas/${corpo.idPlanejamento}`);
     }
 }
