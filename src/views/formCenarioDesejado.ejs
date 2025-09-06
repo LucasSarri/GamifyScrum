@@ -10,25 +10,24 @@
     <div class="centraliza_div">
         <h1>Cenário Desejado</h1>
         <form action="/cenario_desejado" method="post">
-            <div class="form-columns">
-                <div class="column">
-                    <% for(let i=0; i < (cenariosdesejados.length/2); i++) { %>
-                        <div>
-                            <input type="checkbox" name="ativo" value="<%=cenariosdesejados[i].id%>">
-                            <input type="text" name="descricao" value="<%=cenariosdesejados[i].descricao%>">
-                        </div>
-                    <% } %>
-                </div>
-    
-                <div class="column">
-                    <% for(let i=(cenariosdesejados.length/2); i < cenariosdesejados.length; i++) { %>
-                        <div>
-                            <input type="checkbox" name="ativo" value="<%=cenariosdesejados[i].id%>">
-                            <input type="text" name="descricao" value="<%=cenariosdesejados[i].descricao%>">
-                        </div>
-                    <% } %>
-                </div>
+        <div class="form-columns">
+            <div class="column">
+                <% for(let i=0; i < Math.ceil(cenariosDesejados.length/2); i++) { %>
+                    <div>
+                        <input type="checkbox" name="cenariosDesejados" value="<%=cenariosDesejados[i].id%>"<% if (idsSugestoes.includes(cenariosDesejados[i].id)) { %> checked <% } %> >
+                        <%=cenariosDesejados[i].descricao%>
+                    </div>
+                <% } %>
             </div>
+            <div class="column">
+                <% for(let i=Math.ceil(cenariosDesejados.length/2); i < cenariosDesejados.length; i++) { %>
+                    <div>
+                        <input type="checkbox" name="cenariosDesejados" value="<%=cenariosDesejados[i].id%>"<% if (idsSugestoes.includes(cenariosDesejados[i].id)) { %> checked <% } %> >
+                        <%=cenariosDesejados[i].descricao%>
+                    </div>
+                <% } %>
+            </div>
+        </div>
 
             <div>
                 <input type="number" name="idPlanejamento" value="<%=planejamento%>" readonly hidden>

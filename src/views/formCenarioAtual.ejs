@@ -12,26 +12,24 @@
         <form action="/add_cenario_atual" method="post">
             <div class="form-columns">
                 <div class="column">
-                    <% for(let i=0; i < (cenariosatuais.length/2); i++) { %>
+                    <% for(let i=0; i < Math.ceil(cenariosAtuais.length/2); i++) { %>
                         <div>
-                            <input type="checkbox" name="ativo" value="<%=cenariosatuais[i].id%>">
-                            <input type="text" name="descricao" value="<%=cenariosatuais[i].descricao%>">
+                            <input type="checkbox" name="ativo" value="<%=cenariosAtuais[i].id%>">
+                            <span><%=cenariosAtuais[i].descricao%></span>
                         </div>
                     <% } %>
                 </div>
-    
                 <div class="column">
-                    <% for(let i=(cenariosatuais.length/2); i < cenariosatuais.length; i++) { %>
+                    <% for(let i=Math.ceil(cenariosAtuais.length/2); i < cenariosAtuais.length; i++) { %>
                         <div>
-                            <input type="checkbox" name="ativo" value="<%=cenariosatuais[i].id%>">
-                            <input type="text" name="descricao" value="<%=cenariosatuais[i].descricao%>">
+                            <input type="checkbox" name="ativo" value="<%=cenariosAtuais[i].id%>">
+                            <span><%=cenariosAtuais[i].descricao%></span>
                         </div>
                     <% } %>
                 </div>
-            </div>
-
-            <div>
-                <input type="number" name="idPlanejamento" value="<%=planejamento%>" readonly hidden>
+                <div>
+                    <input type="number" name="idPlanejamento" value="<%=planejamento%>" readonly hidden>
+                </div>
             </div>
 
             <button class="btn-principal"><a href="/turma/<%=planejamento%>">Voltar</a></button>

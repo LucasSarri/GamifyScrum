@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { turmaRepository } from "../repositories/turmaRepository";
 import { planejamentoRepository } from "../repositories/planejamentoRepository";
-import { semanasRepository } from "../repositories/semanasRepository";
 
 export class TurmaController 
 {
@@ -39,19 +38,6 @@ export class TurmaController
                 duracao_prevista: turma.duracao_prevista,
                 planejamentos: [planejamento]
             });
-
-            if(!turma.duracao_prevista || isNaN(turma.duracao_prevista))
-            {
-                return res.status(400)
-            }
-
-            const semanasRepo = semanasRepository;
-
-            const semanas = Array.from({ length: Number(turma.duracao_prevista) }, (_, i) =>
-                semanasRepo.create({ planejamento: planejamento})
-            );
-
-            await semanasRepo.save(semanas);
 
             await turmaRepository.save(newTurma);
 

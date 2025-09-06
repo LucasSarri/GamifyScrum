@@ -1,13 +1,33 @@
+import { In } from "typeorm";
 import { Request, Response } from "express";
 import { cenarioDesejadoRepository } from "../repositories/cenarioDesejadoRepository";
 import { planejamentoRepository } from "../repositories/planejamentoRepository";
+import { cenarioAtualRepository } from "../repositories/cenarioAtualRepository";
+import { sugestaoRepository } from "../repositories/sugestaoRepository";
 
 
 export class CenarioDesejadoController {
     async RenderCenariosDesejados (req: Request, res: Response) {
-        const cenariosdesejados = await cenarioDesejadoRepository.find();
+        const cenariosDesejados = await cenarioDesejadoRepository.find();
         const parametro = req.params.parametro;
-        return res.status(200).render(`formCenarioDesejado`, {cenariosdesejados, planejamento: parametro});
+
+        const cenariosAtuais = await cenarioAtualRepository.find({
+            where: {planejamentos:{id:Number(parametro)}}
+        });
+
+        const idsCenariosAtuais = cenariosAtuais.map(ca => ca.id);
+
+        const sugestoes = await sugestaoRepository.find({
+            where: {
+                origem_tipo: "CenarioAtual",
+                origem_id: In(idsCenariosAtuais),
+                destino_tipo: "CenarioDesejado"
+            }
+        });
+
+        const idsSugestoes = sugestoes.map(s => s.destino_id);
+
+        return res.status(200).render(`formCenarioDesejado`, {cenariosDesejados, idsSugestoes, planejamento: parametro});
     }
 
     async addCenarioDesejadoPlanejamento (req: Request, res: Response) {

@@ -43,7 +43,6 @@ export class ConceitosScrumController {
 
         await planejamentoRepository.save(planejamento);
     
-        //return res.status(200).redirect(`/perfil_scrum/${corpo.idPlanejamento}`);
-        return res.status(200).redirect(`/semanas/${corpo.idPlanejamento}`);
+        return res.status(200).redirect(`/perfil_scrum/${corpo.idPlanejamento}`);
     }
 }

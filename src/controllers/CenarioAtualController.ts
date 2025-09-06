@@ -4,9 +4,9 @@ import { planejamentoRepository } from "../repositories/planejamentoRepository";
 
 export class CenarioAtualController {
     async RenderCenariosAtuais (req: Request, res: Response) {
-        const cenariosatuais = await cenarioAtualRepository.find();
+        const cenariosAtuais = await cenarioAtualRepository.find();
         const parametro = req.params.parametro;
-        return res.status(200).render('formCenarioAtual', {cenariosatuais: cenariosatuais, planejamento: parametro});
+        return res.status(200).render('formCenarioAtual', {cenariosAtuais, planejamento: parametro});
     }
 
     async addCenarioAtualPlanejamento (req: Request, res: Response) {

@@ -11,10 +11,9 @@ export class GamificacaoController
     {
         const parametro = req.params.parametro;
 
-        const gamificacao = await gamificacaoRepository
-        .createQueryBuilder("gamificacao")
-        .innerJoinAndSelect("gamificacao.ag_gamificacao", "ag_gamificacao")
-        .getMany();
+        const gamificacao = await gamificacaoRepository.createQueryBuilder("gamificacao").innerJoinAndSelect("gamificacao.ag_gamificacao", "ag_gamificacao").getMany();
+
+        
 
         return res.status(200).render(`formElementosGamificacao`, {gamificacao, planejamento: parametro});
     }

@@ -9,7 +9,7 @@ import { Acao_Recompensada } from "./Acao_Recompensada";
 import { Recompensa } from "./Recompensa";
 import { Gamificacao } from "./Gamificacao";
 import { Mapeamento } from "./Mapeamento";
-import { Semana } from "./Semana";
+
 
 @Entity("planejamento")
 export class Planejamento {
@@ -26,7 +26,8 @@ export class Planejamento {
     @JoinTable()
     turma: Promise<Turma>;
 
-    @ManyToMany(() => Scrum, scrum => scrum.planejamentos)
+    @ManyToMany(() => Scrum)
+    @JoinTable()
     scrums: Promise<Scrum[]>;
 
     @ManyToMany(() => Regra)
@@ -60,7 +61,4 @@ export class Planejamento {
     @ManyToMany(() => Mapeamento, planejamento_mapeamentos => planejamento_mapeamentos.planejamentos)
     @JoinTable()
     mapeamentos: Promise<Mapeamento[]>;
-
-    @OneToMany(() => Semana, semana => semana.planejamento)
-    semanas: Semana[];
 }

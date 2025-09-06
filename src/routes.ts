@@ -11,7 +11,6 @@ import { RecompensasController } from "./controllers/RecompensasController";
 import { AcoesRecompensadasController } from "./controllers/AcoesRecompensadasController";
 import { PlanejamentoController } from "./controllers/PlanejamentoController";
 import { RegrasController } from "./controllers/RegrasController";
-import { SemanasController } from "./controllers/SemanasController";
 
 const routes = Router();
 
@@ -46,9 +45,6 @@ routes.post("/recompensa", new RecompensasController().addRecompensasPlanejament
 
 routes.get("/acoesrecompensadas/:parametro", new AcoesRecompensadasController().RenderAcoesRecompensadas);
 routes.post("/acoesrecompensadas", new AcoesRecompensadasController().addAcoesRecompensadasPlanejamento);
-
-routes.get("/semanas/:parametro", new SemanasController().RenderSemanas);
-routes.post("/semanas/:parametro/eventos", new SemanasController().addEventosSemana);
 
 routes.get("/planejamento/:parametro", new PlanejamentoController().RenderPlanejamento);
 
