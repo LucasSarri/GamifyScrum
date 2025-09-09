@@ -25,7 +25,7 @@ export class CenarioDesejadoController {
             }
         });
 
-        const idsSugestoes = sugestoes.map(s => s.destino_id);
+        const idsSugestoes = sugestoes.map(s => Number(s.destino_id));
 
         return res.status(200).render(`formCenarioDesejado`, {cenariosDesejados, idsSugestoes, planejamento: parametro});
     }
@@ -34,7 +34,7 @@ export class CenarioDesejadoController {
         const corpo = req.body;
 
         const planejamento = await planejamentoRepository.findOne({
-            where: {id: corpo.idPlanejamento},
+            where: {id: Number(corpo.idPlanejamento)},
             relations: ['cenarios_desejados']
         });
 
@@ -42,7 +42,7 @@ export class CenarioDesejadoController {
             throw new Error(`Planejamento com ID ${corpo.idPlanejamento} não encontrado.`);
         }
 
-        const cenariosDesejados = await cenarioDesejadoRepository.findByIds(corpo.ativo);
+        const cenariosDesejados = await cenarioDesejadoRepository.findByIds(corpo.cenariosDesejados);
 
         if (cenariosDesejados.length === 0) {
             throw new Error('Nenhum dos cenários fornecidos foi encontrado.');

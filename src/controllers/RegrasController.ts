@@ -7,9 +7,8 @@ export class RegrasController
     async RenderRecompensas (req: Request, res: Response) 
     {
         const parametro = req.params.parametro;
-        const regras = await regraRepository.createQueryBuilder("recompensas")
+        const regras = await regraRepository.createQueryBuilder("regra")
         .getMany();
-
         return res.status(200).render(`formRegras`, {regras, planejamento: parametro});
     }
 
@@ -18,7 +17,7 @@ export class RegrasController
         const corpo = req.body;
 
         const planejamento = await planejamentoRepository.findOne({
-            where: {id: corpo.idPlanejamento},
+            where: {id: Number(corpo.idPlanejamento)},
             relations: ['regras']
         });
 

@@ -16,8 +16,8 @@
                     <% for(let i=0; i < gamificacao.length; i++) { %>
                         <% if(gamificacao[i].ag_gamificacao.id == 1) { %>
                             <div>
-                                <input type="checkbox" name="ativo" value="<%=gamificacao[i].id%>">
-                                <input type="text" name="descricao" value="<%=gamificacao[i].descricao%>">
+                                <input type="checkbox" name="elementosGamificacao" value="<%=gamificacao[i].id%>" <% if (idsSugestoes.includes(gamificacao[i].id)) { %> checked <% } %> >
+                                <%= gamificacao[i].descricao %>
                             </div>
                         <% } %>
                     <% } %>
@@ -28,8 +28,8 @@
                     <% for(let i=0; i < gamificacao.length; i++) { %>
                         <% if(gamificacao[i].ag_gamificacao.id == 2) { %>
                             <div>
-                                <input type="checkbox" name="ativo" value="<%=gamificacao[i].id%>">
-                                <input type="text" name="descricao" value="<%=gamificacao[i].descricao%>">
+                                <input type="checkbox" name="elementosGamificacao" value="<%=gamificacao[i].id%>" <% if (idsSugestoes.includes(gamificacao[i].id)) { %> checked <% } %> >
+                                <%= gamificacao[i].descricao %>
                             </div>
                         <% } %>
                     <% } %>
@@ -40,8 +40,8 @@
                     <% for(let i=0; i < gamificacao.length; i++) { %>
                         <% if(gamificacao[i].ag_gamificacao.id == 3) { %>
                             <div>
-                                <input type="checkbox" name="ativo" value="<%=gamificacao[i].id%>">
-                                <input type="text" name="descricao" value="<%=gamificacao[i].descricao%>">
+                                <input type="checkbox" name="elementosGamificacao" value="<%=gamificacao[i].id%>" <% if (idsSugestoes.includes(gamificacao[i].id)) { %> checked <% } %> >
+                                <%= gamificacao[i].descricao %>
                             </div>
                         <% } %>
                     <% } %>
@@ -52,8 +52,8 @@
                     <% for(let i=0; i < gamificacao.length; i++) { %>
                         <% if(gamificacao[i].ag_gamificacao.id == 4) { %>
                             <div>
-                                <input type="checkbox" name="ativo" value="<%=gamificacao[i].id%>">
-                                <input type="text" name="descricao" value="<%=gamificacao[i].descricao%>">
+                                <input type="checkbox" name="elementosGamificacao" value="<%=gamificacao[i].id%>" <% if (idsSugestoes.includes(gamificacao[i].id)) { %> checked <% } %> >
+                                <%= gamificacao[i].descricao %>
                             </div>
                         <% } %>
                     <% } %>
@@ -64,8 +64,8 @@
                     <% for(let i=0; i < gamificacao.length; i++) { %>
                         <% if(gamificacao[i].ag_gamificacao.id == 5) { %>
                             <div>
-                                <input type="checkbox" name="ativo" value="<%=gamificacao[i].id%>">
-                                <input type="text" name="descricao" value="<%=gamificacao[i].descricao%>">
+                                <input type="checkbox" name="elementosGamificacao" value="<%=gamificacao[i].id%>" <% if (idsSugestoes.includes(gamificacao[i].id)) { %> checked <% } %> >
+                                <%= gamificacao[i].descricao %>
                             </div>
                         <% } %>
                     <% } %>

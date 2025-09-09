@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Agrupamento_Scrum } from "./Agrupamento_Scrum";
+import { Planejamento } from "./Planejamento";
 
 @Entity("scrum")
 export class Scrum {
@@ -14,4 +15,7 @@ export class Scrum {
 
     @ManyToOne(() => Agrupamento_Scrum, ag_scrum => ag_scrum.scrums)
     idAgScrum: Scrum;
+
+    @ManyToMany(() => Planejamento, (planejamento) => planejamento.scrums)
+    planejamentos: Planejamento[];
 }

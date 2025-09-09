@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Default1757170662447 implements MigrationInterface {
-    name = 'Default1757170662447'
+export class Default1757375303621 implements MigrationInterface {
+    name = 'Default1757375303621'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE "agrupamento_scrum" ("id" SERIAL NOT NULL, "descricao" character varying(50) NOT NULL, CONSTRAINT "PK_0679c467dd59f7665c1a9599e4e" PRIMARY KEY ("id"))`);
@@ -53,7 +53,7 @@ export class Default1757170662447 implements MigrationInterface {
         await queryRunner.query(`ALTER TABLE "mapeamento" ADD CONSTRAINT "FK_035fe9d7bea798ab9efce33bdd2" FOREIGN KEY ("agMapeamentoId") REFERENCES "agrupamento_mapeamento"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "planejamento" ADD CONSTRAINT "FK_1612ff3c88c9de8d9d698919b19" FOREIGN KEY ("turmaId") REFERENCES "turma"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "planejamento_scrums_scrum" ADD CONSTRAINT "FK_afdcd96d8818bd43fad8c4c06f1" FOREIGN KEY ("planejamentoId") REFERENCES "planejamento"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
-        await queryRunner.query(`ALTER TABLE "planejamento_scrums_scrum" ADD CONSTRAINT "FK_39cff654c9e94491744c7785879" FOREIGN KEY ("scrumId") REFERENCES "scrum"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
+        await queryRunner.query(`ALTER TABLE "planejamento_scrums_scrum" ADD CONSTRAINT "FK_39cff654c9e94491744c7785879" FOREIGN KEY ("scrumId") REFERENCES "scrum"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "planejamento_regras_regra" ADD CONSTRAINT "FK_5265f6bcdf5b87ada1dec5b7992" FOREIGN KEY ("planejamentoId") REFERENCES "planejamento"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
         await queryRunner.query(`ALTER TABLE "planejamento_regras_regra" ADD CONSTRAINT "FK_3ba1ca6373cf4a240461125a4e9" FOREIGN KEY ("regraId") REFERENCES "regra"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
         await queryRunner.query(`ALTER TABLE "planejamento_recompensas_recompensa" ADD CONSTRAINT "FK_a059397ee94b3ef1cfe211a57b6" FOREIGN KEY ("planejamentoId") REFERENCES "planejamento"("id") ON DELETE CASCADE ON UPDATE CASCADE`);
