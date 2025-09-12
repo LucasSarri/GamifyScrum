@@ -18,6 +18,7 @@ routes.get("/", new IndexController().RenderIndex);
 
 routes.get("/turma/:parametro", new TurmaController().RenderCreateTurma);
 routes.post("/turma/:parametro", new TurmaController().CreateTurma);
+routes.post("/turma/remove/:parametro", new TurmaController().RemoveTurma);
 
 routes.get("/cenario_atual/:parametro", new CenarioAtualController().RenderCenariosAtuais);
 routes.post("/add_cenario_atual", new CenarioAtualController().addCenarioAtualPlanejamento);

@@ -17,7 +17,7 @@
                         <% if(mapeamentos[i].ag_mapeamento.id == 1) { %>
                             <div>
                                 <input type="checkbox" name="ativo" value="<%=mapeamentos[i].id%>">
-                                <input type="text" name="descricao" value="<%=mapeamentos[i].descricao%>">
+                                <%=mapeamentos[i].descricao%>
                             </div>
                         <% } %>
                     <% } %>
@@ -29,7 +29,7 @@
                         <% if(mapeamentos[i].ag_mapeamento.id == 2) { %>
                             <div>
                                 <input type="checkbox" name="ativo" value="<%=mapeamentos[i].id%>">
-                                <input type="text" name="descricao" value="<%=mapeamentos[i].descricao%>">
+                                <%=mapeamentos[i].descricao%>
                             </div>
                         <% } %>
                     <% } %>
@@ -41,7 +41,7 @@
                         <% if(mapeamentos[i].ag_mapeamento.id == 3) { %>
                             <div>
                                 <input type="checkbox" name="ativo" value="<%=mapeamentos[i].id%>">
-                                <input type="text" name="descricao" value="<%=mapeamentos[i].descricao%>">
+                                <%=mapeamentos[i].descricao%>
                             </div>
                         <% } %>
                     <% } %>
@@ -52,8 +52,7 @@
                 </div>
             </div>
 
-            <button class="btn-principal"><a href="/turma/<%=planejamento%>">Voltar</a></button>
-            <button class="btn-principal">Ajuda</button>
+            <button class="btn-principal"><a href="/elementos_gamificacao/<%=planejamento%>">Voltar</a></button>
             <button type="submit" class="btn-principal">Próximo</button>
         </form>
     </div>

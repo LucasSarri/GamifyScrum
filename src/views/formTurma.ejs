@@ -9,6 +9,7 @@
 <body>
     <div class="centraliza_div">
         <h1>Cadastro de Turma</h1>
+
         <form action="/turma/<%=planejamento%>" method="post">
             <div class="form-columns">
                 <div class="column">
@@ -47,6 +48,10 @@
             </div>
             
             <button type="submit" class="btn-principal">Cadastrar</button>
+        </form>
+
+        <form action="/turma/remove/<%=planejamento%>" method="post" style="margin-top: 10px;">
+            <button type="submit" class="btn-principal">Voltar</button>
         </form>
     </div>
 </body>

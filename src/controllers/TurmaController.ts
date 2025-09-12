@@ -44,4 +44,14 @@ export class TurmaController
             return res.status(200).redirect(`/cenario_atual/${planejamento.id}`);
         }
     }
+
+    async RemoveTurma (req: Request, res: Response) 
+    {
+        await planejamentoRepository.createQueryBuilder()
+        .delete()
+        .where("id = :id", { id: Number(req.params.parametro) })
+        .execute();
+
+        return res.status(200).redirect("/");
+    }
 }

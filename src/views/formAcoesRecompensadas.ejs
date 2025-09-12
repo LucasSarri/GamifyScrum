@@ -15,7 +15,7 @@
                     <% for(let i=0; i < acoesRecompensadas.length/2; i++) { %>
                         <div>
                             <input type="checkbox" name="ativo" value="<%=acoesRecompensadas[i].id%>">
-                            <input type="text" name="descricao" value="<%=acoesRecompensadas[i].descricao%>">
+                            <%=acoesRecompensadas[i].descricao%>
                         </div>
                     <% } %>
                 </div>
@@ -24,7 +24,7 @@
                     <% for(let i=(acoesRecompensadas.length/2); i < acoesRecompensadas.length; i++) { %>
                         <div>
                             <input type="checkbox" name="ativo" value="<%=acoesRecompensadas[i].id%>">
-                            <input type="text" name="descricao" value="<%=acoesRecompensadas[i].descricao%>">
+                            <%=acoesRecompensadas[i].descricao%>
                         </div>
                     <% } %>
                 </div>
@@ -34,8 +34,7 @@
                 </div>
             </div>
 
-            <button class="btn-principal"><a href="/turma/<%=planejamento%>">Voltar</a></button>
-            <button class="btn-principal">Ajuda</button>
+            <button class="btn-principal"><a href="/recompensa/<%=planejamento%>">Voltar</a></button>
             <button type="submit" class="btn-principal">Próximo</button>
         </form>
     </div>

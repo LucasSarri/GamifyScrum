@@ -7,8 +7,6 @@ export class ConceitosScrumController {
     async RenderConceitosScrum (req: Request, res: Response) {
         const parametro = req.params.parametro;
 
-        console.log('aa')
-
         const conceitos_scrum = await conceitosScrumRepository
         .createQueryBuilder("scrum")
         .innerJoinAndSelect("scrum.idAgScrum", "ag_scrum")
