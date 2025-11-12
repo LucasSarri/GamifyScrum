@@ -70,17 +70,7 @@ npm run dev
 | `/acoesrecompensadas`    | Definição das ações que geram recompensas                     |
 | `/planejamento`          | Geração final do planejamento gamificado                      |
 
-## 🧩 Estrutura do Projeto
-src/
-├── controllers/     # Controladores responsáveis pelas requisições HTTP
-├── services/        # Regras de negócio e lógica principal
-├── entities/        # Entidades e mapeamento com o banco de dados (TypeORM)
-├── repositories/    # Consultas personalizadas ao banco
-├── routes/          # Definição das rotas da aplicação
-├── migrations/      # Controle de versão do banco de dados
-└── utils/           # Funções auxiliares e helpers
 ## 👨‍💻 Autor
-
 Lucas Sarri
 🔗 [LinkedIn](https://www.linkedin.com/in/lucas-sarri-de-mello-a54776206/)
 💻 [GitHub](https://github.com/LucasSarri)
