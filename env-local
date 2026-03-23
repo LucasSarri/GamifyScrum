@@ -3,5 +3,4 @@ DB_PORT=5433
 DB_USER=postgres
 DB_PASS=gamificator
 DB_NAME=postgres
-
 PORT=3000

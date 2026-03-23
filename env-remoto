@@ -1,0 +1,7 @@
+DB_HOST=db.bbrnatjsjqdviekmhojt.supabase.co
+DB_PORT=5432
+DB_USER=postgres
+DB_PASS=#G4m1fIc@tor(-0HbfGds
+DB_NAME=postgres
+
+PORT=3000
