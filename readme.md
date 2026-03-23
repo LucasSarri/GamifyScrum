@@ -10,13 +10,21 @@ O sistema auxilia o usuário a estruturar atividades de forma dinâmica, com foc
 - **Node.js**
 - **TypeScript**
 - **Express**
+- **EJS**
 - **TypeORM**
 - **PostgreSQL**
-- **Docker**
 
 ---
 
-## ⚙️ Como Executar o Projeto
+## ⚙️ Funcionalidades
+- Cadastro e gerenciamento de entidades
+- Renderização server-side
+- Integração com banco de dados
+- Migrations com TypeORM
+
+---
+
+## ⚙️ Como Executar o Projeto (localmente)
 
 ### 1. Clone o repositório
 ```bash
@@ -54,7 +62,7 @@ npm run migration:run
 npm run dev
 ```
 
-## 📡 Endpoints Principais
+### 📡 Endpoints Principais
 
 | Rota                     | Descrição                                                     |
 | ------------------------ | ------------------------------------------------------------- |
@@ -70,7 +78,13 @@ npm run dev
 | `/acoesrecompensadas`    | Definição das ações que geram recompensas                     |
 | `/planejamento`          | Geração final do planejamento gamificado                      |
 
+---
+## 🌐 Deploy
+https://gamifyscrum.onrender.com/
+
+---
+
 ## 👨‍💻 Autor
-Lucas Sarri
+Lucas Sarri de Mello
 🔗 [LinkedIn](https://www.linkedin.com/in/lucas-sarri-de-mello-a54776206/)
 💻 [GitHub](https://github.com/LucasSarri)
